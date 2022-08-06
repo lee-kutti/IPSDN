@@ -1,0 +1,11 @@
+#SYN flooding
+alert tcp any any -> any any (sid:1000001; rev:1; flags:S; msg:"TCP SYN flooding attack"; flow:not_established; detection_filter: track by_dst, count 10, seconds 1;)
+
+#LAND
+alert tcp any any -> any any (sid:1000002; rev:1; flags:S; msg:"LAND attack"; sameip; flow:to_server;)
+
+#smurf
+alert icmp any any -> 10.255.255.255 any (sid:1000003; rev:1; msg:"Smurf attack"; itype:8; detection_filter: track by_dst, count 10, seconds 1;)
+
+#UDP flooding
+alert udp any any -> any any (sid:1000004; rev:1; msg:"UDP flooding attack"; detection_filter: track by_dst, count 10, seconds 1;)

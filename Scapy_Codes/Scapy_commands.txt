@@ -1,0 +1,29 @@
+python -E SYN_Flood.py 10.0.0.4
+
+python -E UDP_Flood.py 10.0.0.4
+
+python -E Multi_UDP.py 10.0.0.1 10.0.0.2 10.0.0.3 10.0.0.4
+
+python -E Multi_SYN.py 10.0.0.1 10.0.0.2 10.0.0.3 10.0.0.4
+
+python -E LAND.py 10.0.0.4 6969
+
+python -E Smurf.py 10.255.255.255 10.0.0.4
+
+
+
+python -E Normal_TCP.py -s 1 -e 4
+
+python -E Normal_UDP.py -s 1 -e 4
+
+
+Kịch bản thu thập dữ liệu train:
+-	Dữ liệu normal (class = 0):
+	Đầu tiên chạy file ryu-manager normal
+	Tiếp theo chạy lệnh pingall
+	Tiếp theo chạy lần lượt Normal_TCP và Normal_UDP
+
+- Dữ liệu attack (class = 1):
+	Đầu tiên chạy file ryu-manager attack
+	Tiếp theo chạy LAND, UDP flood và TCP flood
+
